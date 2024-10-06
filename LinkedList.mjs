@@ -45,4 +45,21 @@ export default class {
             else currentNode.next = null;
         }
     }
+
+    contains(value) {
+        let currentNode = this.nodes;
+        while(currentNode.next !== null) {
+            if (currentNode.value === value) return true;
+            else currentNode = currentNode.next;
+        }
+        return false;
+    }
+    find(value) {
+        let currentNode = this.nodes;
+        for (let i = 1; i < this.size; i++) {
+            if (currentNode.value === value) return i;
+            else currentNode = currentNode.next;
+        }
+        return null;
+    }
 }

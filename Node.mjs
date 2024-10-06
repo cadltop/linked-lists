@@ -1,4 +1,4 @@
-export class Node {
+export default class {
     value = null;
     nextNode = null;
 }

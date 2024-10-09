@@ -12,16 +12,13 @@ export default class {
     }
     append(value) {
         if(this.#nodes === null) this.prepend(value);
-        else {
-            let currentNode = this.#nodes;
-            while(currentNode.nextNode !== null) currentNode = currentNode.nextNode;
-            const node = new Node();
-            node.value = value;
-            currentNode.nextNode = node;
-        }
+        let currentNode = this.#nodes;
+        while(currentNode.nextNode !== null) currentNode = currentNode.nextNode;
+        const node = new Node();
+        node.value = value;
+        currentNode.nextNode = node;
         this.size++;
     }
-
     head() {
         return this.#nodes.value;
     }
@@ -30,12 +27,9 @@ export default class {
         while(currentNode.nextNode !== null) currentNode = currentNode.nextNode;
         return currentNode.value;
     }
-
     at(index) {
         let currentNode = this.#nodes;
-        for (let i = 0; i < index; i++) {
-            currentNode = currentNode.nextNode;
-        }
+        for (let i = 0; i < index; i++) currentNode = currentNode.nextNode;
         return currentNode.value;
     }
     pop() {
@@ -44,13 +38,12 @@ export default class {
         currentNode.nextNode = null;
         this.size--;
     }
-
     contains(value) {
         let currentNode = this.#nodes;
         for (let i = 0; i < this.size; i++) {
             if (currentNode.value === value) return true;
             else if (currentNode.nextNode === null) return false;
-            else currentNode = currentNode.nextNode;
+            currentNode = currentNode.nextNode;
         }
     }
     find(value) {
@@ -58,10 +51,9 @@ export default class {
         for (let i = 0; i < this.size; i++) {
             if (currentNode.value === value) return i;
             else if (currentNode.nextNode === null) return null;
-            else currentNode = currentNode.nextNode;
+            currentNode = currentNode.nextNode;
         }
     }
-    
     toString() {
         let currentNode = this.#nodes;
         let string = "";
@@ -83,7 +75,9 @@ export default class {
                 node.value = value;
                 node.nextNode = currentNode.nextNode;
                 currentNode.nextNode = node;
-            } else currentNode = currentNode.nextNode;
+                this.size++;
+            }
+            else currentNode = currentNode.nextNode;
         }
     }
     removeAt(index) {
@@ -92,5 +86,6 @@ export default class {
             if (i === (index - 1)) currentNode.nextNode = currentNode.nextNode.nextNode;
             else currentNode = currentNode.nextNode;
         }
+        this.size--;
     }
 }

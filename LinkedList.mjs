@@ -14,7 +14,7 @@ export default class {
         if(this.nodes === null) this.prepend(value);
         else {
             let currentNode = this.nodes;
-            while(currentNode.next !== null) currentNode = currentNode.nextNode;
+            while(currentNode.nextNode !== null) currentNode = currentNode.nextNode;
             const node = new Node();
             node.value = value;
             currentNode.nextNode = node;
@@ -68,10 +68,10 @@ export default class {
         let string = "";
         for (let i = 1; i < this.size; i++) {
             if (currentNode.nextNode) {
-                string = string + ` (${currentNode.value}) ->`;
+                string = string + ` ( ${currentNode.value} ) ->`;
                 currentNode = currentNode.nextNode;
             } else {
-                string = string + ` (${currentNode.value}) -> null`;
+                string = string + ` ( ${currentNode.value} ) -> null`;
             }
         }
         return string;
